@@ -1,7 +1,22 @@
-// Toggle menú responsive
-const menuToggle = document.getElementById("menu-toggle");
-const nav = document.querySelector(".nav");
+// Mostrar mensaje al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+  alert("✅ JS actualizado: Bienvenido a RGF BANK");
 
-menuToggle.addEventListener("click", () => {
-  nav.classList.toggle("active");
+  // Cambiar el color de fondo del header automáticamente
+  const header = document.querySelector("header");
+  if (header) {
+    header.style.backgroundColor = "#004aad"; // azul corporativo
+    header.style.color = "white";
+  }
+
+  // Efecto en los links del menú
+  const links = document.querySelectorAll("nav ul li a");
+  links.forEach(link => {
+    link.addEventListener("mouseover", () => {
+      link.style.color = "orange";
+    });
+    link.addEventListener("mouseout", () => {
+      link.style.color = "white";
+    });
+  });
 });
