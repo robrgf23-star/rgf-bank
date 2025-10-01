@@ -1,102 +1,115 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RGF BANK</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGF BANK - Innovación Financiera</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="logo">RGF BANK</div>
-    <nav class="nav">
-      <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#productos">Productos</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#digital">Canales Digitales</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-    <div class="menu-toggle" id="menu-toggle">☰</div>
-  </header>
-
-  <section id="inicio" class="hero">
-    <h1>Bienvenido a RGF BANK</h1>
-    <p>Tu confianza, nuestro compromiso.</p>
-    <a href="#productos" class="btn">Conoce nuestros productos</a>
-  </section>
-
-  <section id="productos" class="section">
-    <h2>Productos</h2>
-    <div class="cards">
-      <div class="card">
+    <header>
+        <div class="top-bar">
+            <div class="logo">RGF BANK</div>
+            <div class="utility-links">
+                <a href="#ayuda">Ayuda</a>
+                <a href="#sucursales">Sucursales</a>
+                <button class="btn-login">Acceso Clientes</button>
+            </div>
+        </div>
         
-        <h3>Cuentas de Ahorro</h3>
-        <p>Administra tu dinero con facilidad y seguridad. Ideal para metas a corto y largo plazo.</p>
-      </div>
-      <div class="card">
+        <nav class="nav">
+            <ul>
+                <li class="dropdown"><a href="#productos">Personas</a>
+                    <ul class="submenu">
+                        <li><a href="#cuentas">Cuentas</a></li>
+                        <li><a href="#prestamos">Préstamos</a></li>
+                        <li><a href="#tarjetas">Tarjetas</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#negocios">Negocios</a>
+                    <ul class="submenu">
+                        <li><a href="#pymes">PYMES</a></li>
+                        <li><a href="#corporativo">Corporativo</a></li>
+                    </ul>
+                </li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#digital">Digital</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Tu futuro financiero empieza hoy.</h1>
+            <p>Descubre soluciones bancarias ágiles y seguras, diseñadas para ti.</p>
+            <a href="#apertura" class="btn-primary">Abre tu Cuenta Online</a>
+        </div>
+        <div class="hero-image">
+             </div>
+    </section>
+    
+    <main class="main-layout">
+        <div class="main-left">
+            <section class="quick-access">
+                <h2>Servicios Rápidos</h2>
+                <div class="access-cards">
+                    <a href="#" class="access-card">💳 Pagar Tarjeta</a>
+                    <a href="#" class="access-card">💸 Transferir</a>
+                    <a href="#" class="access-card">📍 Localizar ATM</a>
+                </div>
+            </section>
+            
+            <section id="productos" class="product-grid">
+                <h2>Nuestros Productos Estrella</h2>
+                <div class="card-product">
+                    <h3>Préstamo Digital</h3>
+                    <p>Aprobación en minutos. 100% online.</p>
+                    <a href="#">Solicitar Ahora →</a>
+                </div>
+                <div class="card-product bg-secondary">
+                    <h3>Cuenta Flex</h3>
+                    <p>0 comisiones y retiros ilimitados.</p>
+                    <a href="#">Ver Detalles →</a>
+                </div>
+            </section>
+        </div>
         
+        <aside class="main-right">
+            <div class="aside-banner">
+                <h3>Banca en Línea</h3>
+                <p>Accede a tus finanzas, 24/7.</p>
+                <button class="btn-login">Ir a la Banca</button>
+            </div>
+            <div class="aside-banner promo-banner">
+                <h3>Promociones</h3>
+                <p>Hasta 12 meses sin intereses en viajes.</p>
+            </div>
+        </aside>
+    </main>
 
-[Image of bank loan]
+    <footer>
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="#">Contáctanos</a></li>
+                    <li><a href="#">Empleos</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">© 2025 RGF BANK | Innovación y Seguridad.</p>
+    </footer>
 
-        <h3>Préstamos Personales</h3>
-        <p>Haz realidad tus proyectos con financiamiento flexible y tasas competitivas.</p>
-      </div>
-      <div class="card">
-        
-
-[Image of credit card]
-
-        <h3>Tarjetas de Crédito</h3>
-        <p>Compra con beneficios exclusivos, puntos de recompensa y respaldo internacional.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="servicios" class="section bg-image"> 
-    <h2>Servicios</h2>
-    <p>Ofrecemos soluciones bancarias para tu día a día: transferencias, pagos de facturas y más.</p>
-    <a href="#" class="btn-secondary">Ver todos los servicios</a>
-  </section>
-
-  <section id="digital" class="section">
-    <h2>Canales Digitales</h2>
-    <div class="cards">
-      <div class="card digital-card">
-        
-
-[Image of mobile banking app]
-
-        <h3>Banca en Línea</h3>
-        <p>Accede a tus cuentas, realiza pagos y transfiere sin salir de casa.</p>
-      </div>
-      <div class="card digital-card">
-        
-
-[Image of smartphone]
-
-        <h3>App Móvil</h3>
-        <p>Tu banco en la palma de tu mano, disponible 24/7 para todas tus gestiones.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="nosotros" class="section bg-light">
-    <h2>Nosotros</h2>
-    <p>RGF BANK es una institución comprometida con la innovación, la seguridad y el bienestar de nuestros clientes. Conoce nuestra historia y misión.</p>
-  </section>
-
-  <section id="contacto" class="section">
-    <h2>Contacto</h2>
-    <p>Email: info@rgfbank.com | Tel: +1 (809) 555-1234 | Dirección: Av. Principal, #456</p>
-  </section>
-
-  <footer>
-    <p>© 2025 RGF BANK | Proyecto académico original inspirado en Banreservas</p>
-  </footer>
-
-  <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

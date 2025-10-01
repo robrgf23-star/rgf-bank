@@ -1,38 +1,55 @@
 // script.js
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("RGF BANK cargado. Funcionalidad JS activa.");
+    console.log("RGF BANK - JS Activo: Diseño Innovador.");
 
-    const header = document.querySelector("header");
-    // Seleccionamos .nav en lugar de .nav ul porque en el CSS la clase 'active' se aplica a .nav
-    const nav = document.querySelector(".nav"); 
+    const nav = document.querySelector(".nav");
     const menuToggle = document.getElementById("menu-toggle");
+    const dropdowns = document.querySelectorAll(".dropdown");
 
-    // Sombra del Header y Alerta del Logo
-    header.style.boxShadow = "0 4px 8px rgba(0,0,0,0.1)"; 
-    document.querySelector(".logo").addEventListener("click", () => {
-        alert("Bienvenido a RGF BANK 🏦");
-    });
-
-    // 1. Menú Responsive Toggle (Alterna el menú principal)
+    // 1. Menú Responsive Toggle (Abre/Cierra el menú principal)
     menuToggle.addEventListener("click", () => {
-        // CORRECCIÓN: Usamos toggle en la clase 'nav' para la activación
         nav.classList.toggle("active");
-        
-        // Opcional: Cambiar el ícono de "☰" a "✖"
         menuToggle.textContent = nav.classList.contains('active') ? '✖' : '☰'; 
     });
 
-    // 2. Cerrar el menú principal al hacer clic en un enlace (en móvil)
-    document.querySelectorAll(".nav ul a").forEach(link => {
+    // 2. Manejo de Submenús en Móvil (Alternar al hacer clic)
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('a');
+        
+        link.addEventListener("click", (e) => {
+            // Se comprueba si la ventana es móvil (debe coincidir con el 900px de CSS)
+            if (window.innerWidth <= 900) { 
+                e.preventDefault(); 
+                
+                // Cierra otros submenús
+                dropdowns.forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('active');
+                    }
+                });
+
+                // Alterna el submenú actual
+                dropdown.classList.toggle("active"); 
+            }
+        });
+    });
+
+    // 3. Cerrar menú móvil al seleccionar un enlace
+    document.querySelectorAll(".nav a").forEach(link => {
         link.addEventListener("click", () => {
-            // Se comprueba si la ventana es móvil (debe coincidir con el 768px de CSS)
-            if (window.innerWidth <= 768 && nav.classList.contains("active")) { 
+            if (window.innerWidth <= 900 && nav.classList.contains("active")) {
                 setTimeout(() => {
                     nav.classList.remove("active");
-                    menuToggle.textContent = '☰'; // Restaura el ícono
+                    menuToggle.textContent = '☰'; 
+                    dropdowns.forEach(d => d.classList.remove('active')); // Cierra submenús
                 }, 100); 
             }
         });
+    });
+
+    // 4. Placeholder para la funcionalidad de Login
+    document.querySelector('.btn-login').addEventListener('click', () => {
+        alert('Redirigiendo a la plataforma de Acceso Clientes...');
     });
 });
