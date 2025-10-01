@@ -1,14 +1,23 @@
+/* Paleta de Colores Inspirada en Banreservas */
+:root {
+  --primary-color: #004aad; /* Azul Oscuro (Base del Header) */
+  --secondary-color: #ff9900; /* Naranja/Ámbar (Resaltado/Botones) */
+  --light-bg: #f5f5f5; /* Fondo más claro */
+  --text-color: #2c3e50; /* Texto oscuro */
+}
+
 /* Estilos generales */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f4f9;
-  color: #333;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: var(--light-bg);
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
 /* Header */
 header {
-  background: #004aad;
+  background: var(--primary-color);
   color: white;
   display: flex;
   justify-content: space-between;
@@ -16,17 +25,22 @@ header {
   padding: 15px 30px;
   position: sticky;
   top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-  font-size: 1.5em;
-  font-weight: bold;
+  font-size: 1.8em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
 }
 
+/* Navegación Principal */
 .nav ul {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 0;
   margin: 0;
   padding: 0;
 }
@@ -38,39 +52,69 @@ header {
 .nav ul li a {
   color: white;
   text-decoration: none;
-  padding: 8px 12px;
-  transition: 0.3s;
+  padding: 15px 20px;
+  transition: background-color 0.3s;
+  display: block;
 }
 
 .nav ul li a:hover {
-  background: orange;
-  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1); /* Efecto de hover sutil */
+}
+
+/* Flecha de Submenú (usando pseudoelemento) */
+.dropdown > a::after {
+  content: ' \25BE'; /* Código Unicode para el triángulo */
+  margin-left: 5px;
+  font-size: 0.8em;
+  transition: transform 0.3s;
+}
+
+.dropdown:hover > a::after {
+  transform: rotate(180deg); /* Gira la flecha al hacer hover (desktop) */
 }
 
 /* Submenús */
 .submenu {
-  display: none;
+  /* Ocultar con opacidad para transición suave */
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s linear, visibility 0s 0.3s; /* La visibilidad se retrasa */
+  
   position: absolute;
-  background: #0066cc;
+  background: white;
   list-style: none;
-  padding: 10px;
-  top: 100%;
+  padding: 10px 0;
+  top: 100%; 
   left: 0;
-  min-width: 180px;
-  border-radius: 5px;
+  min-width: 220px;
+  border: 1px solid #ddd;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  z-index: 999;
+  border-radius: 4px;
 }
 
 .submenu li a {
   display: block;
-  padding: 8px 12px;
-  color: white;
+  padding: 10px 20px;
+  color: var(--text-color); 
+  background: white;
+  transition: background-color 0.2s, color 0.2s;
 }
 
+.submenu li a:hover {
+  background: var(--light-bg); 
+  color: var(--primary-color);
+}
+
+/* Mostrar el submenú al pasar el ratón (Desktop) */
 .dropdown:hover .submenu {
-  display: block;
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s; /* No retrasa la aparición */
 }
 
-/* Hero */
+
+/* Hero Section */
 .hero {
   background: linear-gradient(to right, #004aad, #0073e6);
   color: white;
@@ -78,14 +122,26 @@ header {
   padding: 100px 20px;
 }
 
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
 .hero .btn {
-  background: orange;
+  background: var(--secondary-color);
   color: white;
-  padding: 10px 20px;
+  padding: 12px 25px;
   text-decoration: none;
   border-radius: 5px;
   margin-top: 20px;
   display: inline-block;
+  font-weight: bold;
+  transition: background 0.3s;
 }
 
 .hero .btn:hover {
@@ -94,9 +150,100 @@ header {
 
 /* Footer */
 footer {
-  background: #222;
+  background: #2c3e50; /* Un color oscuro para el footer */
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 20px;
   margin-top: 50px;
+  font-size: 0.9em;
+}
+
+/* ===================================== */
+/* ESTILOS RESPONSIVOS (Móvil) */
+/* ===================================== */
+
+/* Ocultar el botón de toggle en desktop */
+.menu-toggle {
+  display: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) { /* Se ajusta el breakpoint a 900px */
+  header {
+    padding: 10px 20px;
+  }
+  
+  /* Mostrar el botón de toggle en móvil */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Ocultar el menú por defecto en móvil */
+  .nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 55px; /* Ajusta a la altura del header en móvil */
+    left: 0;
+    background: var(--primary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Mostrar el menú cuando tenga la clase 'active' (controlado por JS) */
+  .nav ul.active {
+    display: flex;
+  }
+
+  .nav ul li {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav ul li:first-child {
+      border-top: none;
+  }
+
+  .nav ul li a {
+    padding: 15px 30px;
+    text-align: left;
+  }
+
+  /* Submenús en móvil */
+  .submenu {
+    position: static; /* Cambiar a flujo normal */
+    min-width: auto;
+    background: rgba(0, 0, 0, 0.1); /* Fondo diferente para submenú */
+    box-shadow: none;
+    border: none;
+    opacity: 1; /* Siempre visible cuando se activa */
+    visibility: visible;
+    padding: 0;
+    display: none; /* Ocultar por defecto, se maneja con JS */
+  }
+  
+  .submenu li a {
+      padding-left: 50px; /* Indentación para sub-items */
+      background: none;
+  }
+
+  /* Mostrar submenú activo en móvil con JS */
+  .dropdown.active .submenu {
+    display: block;
+  }
+  
+  /* Desactivar rotación de flecha en móvil */
+  .dropdown:hover > a::after {
+      transform: none;
+  }
+  
+  /* Cambiar flecha activa en móvil */
+  .dropdown.active > a::after {
+      content: ' \25BC'; /* Flecha hacia abajo/arriba */
+  }
+  
+  .dropdown > a::after {
+      content: ' \25B8'; /* Flecha lateral por defecto en móvil */
+  }
 }
