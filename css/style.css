@@ -1,8 +1,8 @@
 /* Paleta de Colores y Tipografía */
 :root {
-    --primary-color: #004aad; 
-    --secondary-color: #ff9900;
-    --light-gray: #f9f9f9; 
+    --primary-color: #004aad; /* Azul Institucional */
+    --secondary-color: #ff9900; /* Naranja/Ámbar de Resalte */
+    --light-gray: #f9f9f9; /* Fondo de Contenido Secundario */
     --text-color: #333;
     --font-family: 'Roboto', sans-serif;
 }
@@ -56,11 +56,30 @@ header {
     gap: 20px;
 }
 
-/* Nivel Principal: Menú de Categorías */
+.utility-links a {
+    color: white;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.btn-login {
+    background: var(--secondary-color);
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.2s;
+}
+
+.btn-login:hover { background: #cc7a00; }
+
+/* Nivel Principal: Menú de Categorías (Alineado a la Derecha) */
 .nav {
-    padding: 0 5%; /* Padding horizontal */
+    padding: 0 5%; 
     border-bottom: 1px solid #eee;
-    /* CLAVE: Usamos flexbox para que la UL se vaya a la derecha */
+    /* CLAVE: Alinea la UL a la derecha */
     display: flex;
     justify-content: flex-end; 
 }
@@ -76,15 +95,15 @@ header {
 
 .nav ul li a {
     color: var(--text-color);
-    padding: 15px 0; /* Mayor padding vertical para el área de clic */
+    padding: 15px 0; 
     display: block;
     font-weight: 500;
-    transition: color 0.2s;
+    transition: all 0.2s; /* Transición para el borde y el color */
 }
 
 .nav ul li a:hover {
     color: var(--primary-color);
-    border-bottom: 3px solid var(--secondary-color); /* Indicador de hover moderno */
+    border-bottom: 3px solid var(--secondary-color); 
     padding-bottom: 12px;
 }
 
@@ -109,21 +128,54 @@ header {
     opacity: 1;
 }
 
-/* ... (Otros estilos para Hero, Main Layout, Footer permanecen igual o se ajustan) ... */
+.submenu li a {
+    padding: 8px 15px;
+    color: var(--text-color);
+    font-weight: 400;
+    border-bottom: none !important; /* Asegura que el borde no afecte el submenú */
+}
 
-/* HERO SECTION */
-.hero {
+.submenu li a:hover {
     background: var(--light-gray);
-    display: flex; /* Se simplifica a flex para un solo column en este caso */
-    justify-content: center;
+    color: var(--primary-color);
+    padding-bottom: 8px;
+}
+
+.menu-toggle { display: none; }
+
+/* ================================== */
+/* HERO SECTION (Banner con Imagen y Overlay Corregido) */
+/* ================================== */
+
+.hero {
+    /* CORRECCIÓN: Overlay semi-transparente para garantizar legibilidad */
+    background: 
+        linear-gradient(rgba(0, 74, 173, 0.75), rgba(0, 74, 173, 0.75)),
+        url("https://picsum.photos/1920/600?random=1") no-repeat center center;
+    
+    background-size: cover;
+    background-attachment: fixed; /* Efecto Parallax sutil */
+    
+    color: #fff;
     text-align: center;
-    padding: 80px 5%;
+    padding: 120px 5%;
+    min-height: 450px; 
+    
+    /* Centrado de contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .hero-content h1 {
     font-size: 3em;
-    color: var(--primary-color);
     margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
 }
 
 .btn-primary {
@@ -133,9 +185,16 @@ header {
     border-radius: 30px; 
     font-weight: 700;
     display: inline-block;
+    transition: background 0.2s;
 }
 
+.btn-primary:hover { background: #cc7a00; }
+
+
+/* ================================== */
 /* SECCIONES DE CONTENIDO */
+/* ================================== */
+
 .section {
     padding: 60px 5%;
     text-align: center;
@@ -144,8 +203,12 @@ header {
 .section h2 {
     color: var(--primary-color);
     margin-bottom: 40px;
+    font-size: 2.2em;
 }
 
+.bg-light { background: var(--light-gray); }
+
+/* Grid para Productos y Corporativo */
 .product-grid, .corporate-info {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -159,12 +222,24 @@ header {
     background: #f0f8ff;
     border-radius: 12px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
 }
 
+.card-product:hover, .card-info:hover {
+    transform: translateY(-5px); /* Efecto 3D */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-product h3, .card-info h3 { color: var(--primary-color); margin-bottom: 10px; font-size: 1.5em; }
+.card-product a { font-weight: 700; }
+.bg-secondary { background: #fffae8; } 
+
+/* Acceso Rápido/Digitales */
 .access-cards {
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap; /* Para que envuelva en móvil */
 }
 
 .access-card {
@@ -173,9 +248,20 @@ header {
     border: 1px solid #ddd;
     border-radius: 8px;
     font-weight: 500;
+    transition: all 0.2s;
 }
 
+.access-card:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+
+/* ================================== */
 /* FOOTER */
+/* ================================== */
+
 footer {
     background: #1c2b3e;
     color: #ccc;
@@ -187,38 +273,51 @@ footer {
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto 20px;
+    border-bottom: 1px solid #3c4b5e;
+    padding-bottom: 20px;
 }
+
+.footer-col h4 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.footer-col a, .footer-col li {
+    color: #ccc;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.8em;
+    margin-top: 20px;
+}
+
 
 /* ================================== */
 /* RESPONSIVIDAD (Móvil) */
 /* ================================== */
 
 @media (max-width: 900px) {
-    /* Header: Convertimos a un solo nivel */
+    /* Header: Convertimos a un solo nivel y ocultamos el nav por defecto */
     header { 
         flex-direction: row; 
         justify-content: space-between;
+        /* IMPORTANTE: Top-bar maneja el logo y el toggle */
     }
     
     .top-bar {
         width: 100%;
         padding: 15px 20px;
-        position: relative; /* Contenedor para el logo y toggle */
-    }
-
-    .nav { display: none; } /* Ocultar la barra principal por defecto */
-    
-    .menu-toggle { 
-        display: block; 
-        font-size: 2em; 
-        color: white;
-        cursor: pointer;
     }
 
     .nav {
         /* Despliegue del menú móvil */
         position: absolute;
-        top: 55px; /* Ajusta según la altura del top-bar */
+        top: 55px;
         left: 0;
         width: 100%;
         background: white;
@@ -228,24 +327,20 @@ footer {
         padding: 0;
     }
 
-    .nav.active { display: flex; }
+    .nav.active { display: flex; z-index: 999; }
 
     .nav ul { flex-direction: column; width: 100%; gap: 0; }
     .nav ul li { border-bottom: 1px solid #eee; width: 100%; }
-    .nav ul li a { padding: 15px 20px; color: var(--text-color); }
+    .nav ul li a { padding: 15px 20px; color: var(--text-color); border-bottom: none !important; }
 
-    /* Submenú en móvil */
-    .submenu {
-        position: static;
-        box-shadow: none;
-        border: none;
-        padding-left: 20px;
-        background: var(--light-gray);
-    }
-    
+    .menu-toggle { display: block; }
     .utility-links { display: none; }
-    .access-cards { flex-direction: column; }
     
     /* Contenido se ajusta a una columna */
     .product-grid, .corporate-info { grid-template-columns: 1fr; }
+    
+    .hero { min-height: 300px; padding: 80px 5%; }
+    .hero-content h1 { font-size: 2.5em; }
+    .footer-links { flex-direction: column; text-align: center; }
+    .footer-col { margin-bottom: 20px; }
 }
