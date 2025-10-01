@@ -1,12 +1,12 @@
 // script.js
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("RGF BANK cargado correctamente. Funcionalidad JS activa.");
+    console.log("RGF BANK cargado. Funcionalidad JS activa.");
 
     const header = document.querySelector("header");
-    const navUl = document.querySelector(".nav ul");
+    // Seleccionamos .nav en lugar de .nav ul porque en el CSS la clase 'active' se aplica a .nav
+    const nav = document.querySelector(".nav"); 
     const menuToggle = document.getElementById("menu-toggle");
-    const dropdownLinks = document.querySelectorAll(".dropdown > a");
 
     // Sombra del Header y Alerta del Logo
     header.style.boxShadow = "0 4px 8px rgba(0,0,0,0.1)"; 
@@ -16,49 +16,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 1. Menú Responsive Toggle (Alterna el menú principal)
     menuToggle.addEventListener("click", () => {
-        // CORRECCIÓN: Usamos toggle para alternar la clase "active"
-        navUl.classList.toggle("active");
+        // CORRECCIÓN: Usamos toggle en la clase 'nav' para la activación
+        nav.classList.toggle("active");
         
         // Opcional: Cambiar el ícono de "☰" a "✖"
-        menuToggle.textContent = navUl.classList.contains('active') ? '✖' : '☰'; 
+        menuToggle.textContent = nav.classList.contains('active') ? '✖' : '☰'; 
     });
 
-    // 2. Manejo de Submenús en Móvil (Alternar al hacer clic)
-    dropdownLinks.forEach(link => {
-        link.addEventListener("click", (e) => {
-            // Se comprueba si la ventana es móvil (debe coincidir con el 900px de CSS)
-            if (window.innerWidth <= 900) { 
-                e.preventDefault(); // Detiene la navegación (crucial en móvil)
-                
-                const parentLi = link.parentElement; 
-                
-                // Cierra otros submenús abiertos para evitar solapamiento
-                document.querySelectorAll('.dropdown').forEach(dropdown => {
-                    if (dropdown !== parentLi && dropdown.classList.contains('active')) {
-                        dropdown.classList.remove('active');
-                    }
-                });
-
-                // Alterna la clase 'active' para mostrar/ocultar el submenú
-                parentLi.classList.toggle("active"); 
-            }
-            // En desktop, no se previene el default, dejando que CSS maneje el hover.
-        });
-    });
-
-    // 3. Cerrar el menú principal al hacer clic en un enlace (en móvil)
+    // 2. Cerrar el menú principal al hacer clic en un enlace (en móvil)
     document.querySelectorAll(".nav ul a").forEach(link => {
         link.addEventListener("click", () => {
-            if (window.innerWidth <= 900 && navUl.classList.contains("active")) {
-                // Pequeño retraso para permitir la animación o la navegación
+            // Se comprueba si la ventana es móvil (debe coincidir con el 768px de CSS)
+            if (window.innerWidth <= 768 && nav.classList.contains("active")) { 
                 setTimeout(() => {
-                    navUl.classList.remove("active");
+                    nav.classList.remove("active");
                     menuToggle.textContent = '☰'; // Restaura el ícono
-                    
-                    // Cierra todos los submenús al cerrar el menú principal
-                    document.querySelectorAll('.dropdown').forEach(dropdown => {
-                        dropdown.classList.remove('active');
-                    });
                 }, 100); 
             }
         });

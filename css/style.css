@@ -1,24 +1,30 @@
-/* Paleta de Colores Institucional */
+/* Paleta de Colores Inspirada en Banreservas */
 :root {
-  --primary-color: #004aad; /* Azul Oscuro (Base del Header) */
-  --secondary-color: #ff9900; /* Naranja/Ámbar (Resaltado/Botones) */
+  --primary-color: #004aad; /* Azul Oscuro */
+  --secondary-color: #ff9900; /* Naranja/Ámbar */
   --light-bg: #f5f5f5; /* Fondo general */
   --text-color: #2c3e50; /* Texto oscuro */
 }
 
-/* Estilos generales */
-body {
+/* Reset */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: var(--light-bg);
-  color: var(--text-color);
   line-height: 1.6;
+  color: var(--text-color);
+  background: white;
 }
 
 /* Header */
 header {
   background: var(--primary-color);
-  color: white;
+  color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,205 +32,198 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.logo {
+header .logo {
   font-size: 1.8em;
   font-weight: 700;
-  letter-spacing: 1px;
   cursor: pointer;
 }
 
-/* Navegación Principal */
-.nav ul {
-  list-style: none;
+header .nav ul {
   display: flex;
-  gap: 0;
-  margin: 0;
-  padding: 0;
-}
-
-.nav ul li {
-  position: relative;
-}
-
-.nav ul li a {
-  color: white;
-  text-decoration: none;
-  padding: 15px 20px;
-  transition: background-color 0.3s;
-  display: block;
-}
-
-.nav ul li a:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* Flecha de Submenú (Desktop) */
-.dropdown > a::after {
-  content: ' \25BE'; /* Triángulo descendente */
-  margin-left: 5px;
-  font-size: 0.8em;
-  transition: transform 0.3s;
-}
-
-.dropdown:hover > a::after {
-  transform: rotate(180deg);
-}
-
-/* Submenús - Mejoras en Apariencia y Transición */
-.submenu {
-  /* Controlado por Opacidad/Visibilidad para transición suave */
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s linear, visibility 0s 0.3s; 
-  
-  position: absolute;
-  background: white;
   list-style: none;
+}
+
+header .nav ul li {
+  margin-left: 20px;
+}
+
+header .nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
   padding: 10px 0;
-  top: 100%; /* Posicionamiento debajo del enlace padre */
-  left: 0;
-  min-width: 240px;
-  border: 1px solid #eee;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra profesional */
-  z-index: 999;
-  border-radius: 4px;
+  transition: opacity 0.3s;
 }
 
-.submenu li a {
-  display: block;
-  padding: 10px 20px;
-  color: var(--text-color); 
-  background: white;
-  transition: background-color 0.2s, color 0.2s;
+header .nav ul li a:hover {
+  opacity: 0.8;
 }
 
-.submenu li a:hover {
-  background: var(--light-bg); 
-  color: var(--primary-color);
+/* Menu Toggle (mobile) */
+.menu-toggle {
+  display: none;
+  font-size: 1.8em;
+  cursor: pointer;
 }
 
-/* Mostrar el submenú al pasar el ratón (Desktop) */
-.dropdown:hover .submenu {
-  visibility: visible;
-  opacity: 1;
-  transition-delay: 0s;
-}
-
-/* Hero Section y Botón */
+/* Hero - Con imagen de fondo */
 .hero {
-  background: linear-gradient(to right, #004aad, #0073e6);
-  color: white;
+  /* Imagen de ejemplo */
+  background: linear-gradient(rgba(0, 74, 173, 0.7), rgba(0, 74, 173, 0.7)), 
+              url("https://picsum.photos/1920/600?random=1") no-repeat center center/cover;
+  color: #fff;
   text-align: center;
-  padding: 100px 20px;
+  padding: 120px 20px;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 15px;
 }
 
 .hero .btn {
   background: var(--secondary-color);
-  color: white;
+  color: #fff;
   padding: 12px 25px;
-  text-decoration: none;
   border-radius: 5px;
+  text-decoration: none;
   font-weight: bold;
   transition: background 0.3s;
 }
 
 .hero .btn:hover {
-  background: #cc6600;
+  background: #cc7a00;
 }
 
-/* Footer (Estilo más sobrio y profesional) */
+/* Sections */
+.section {
+  padding: 80px 5%;
+  text-align: center;
+}
+
+.section h2 {
+  margin-bottom: 25px;
+  font-size: 2.2em;
+  color: var(--primary-color);
+}
+
+.bg-light {
+  background: var(--light-bg);
+}
+
+/* Fondo con imagen para Servicios */
+.bg-image {
+    /* Imagen de ejemplo con overlay para que el texto se vea */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url("https://picsum.photos/1920/400?random=2") no-repeat center center/cover;
+    color: white;
+}
+
+.bg-image h2, .bg-image p {
+    color: white;
+}
+
+/* Botón secundario para secciones con fondo oscuro */
+.btn-secondary {
+    background: white;
+    color: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 15px;
+    transition: background 0.3s;
+}
+
+.btn-secondary:hover {
+    background: var(--light-bg);
+}
+
+
+/* Cards - Grid Responsive */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+/* Footer */
 footer {
-  background: #2c3e50; 
-  color: white;
+  background: #1c2b3e; /* Un azul muy oscuro */
+  color: #fff;
   text-align: center;
   padding: 25px;
-  margin-top: 50px;
-  font-size: 0.9em;
 }
 
-/* ===================================== */
-/* ESTILOS RESPONSIVOS (Móvil) */
-/* ===================================== */
-
-/* Ocultar el botón de toggle en desktop */
-.menu-toggle {
-  display: none;
-  font-size: 1.5em;
-  cursor: pointer;
-}
-
-@media (max-width: 900px) { 
-  /* Mostrar el botón de toggle en móvil */
-  .menu-toggle {
-    display: block;
-    transition: transform 0.3s;
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+      padding: 10px 20px;
   }
-
-  /* Ocultar el menú por defecto en móvil */
-  .nav ul {
+  
+  header .nav {
     display: none;
     flex-direction: column;
-    width: 100%;
-    position: absolute;
-    top: 55px; 
-    left: 0;
     background: var(--primary-color);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Mostrar el menú cuando tenga la clase 'active' */
-  .nav ul.active {
-    display: flex;
-    max-height: 100vh; /* Permite scroll si hay muchos items */
-    overflow-y: auto;
-  }
-
-  .nav ul li {
+    position: absolute;
+    top: 55px; /* Ajuste para el header más pequeño */
+    left: 0;
     width: 100%;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  /* Ajuste de flecha en móvil */
-  .dropdown > a::after {
-      content: ' \25B8'; /* Flecha lateral por defecto en móvil (cerrado) */
-      transform: none;
-      transition: transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   }
 
-  /* Rotar flecha cuando el submenú está activo en móvil */
-  .dropdown.active > a::after {
-      content: ' \25BC'; /* Flecha hacia abajo (abierto) */
+  header .nav.active {
+    display: flex;
   }
 
-  /* Submenús en móvil (Comportamiento Estático) */
-  .submenu {
-    position: static; 
-    min-width: auto;
-    background: rgba(0, 0, 0, 0.15); /* Un gris oscuro transparente */
-    box-shadow: none;
-    border: none;
-    opacity: 1; 
-    visibility: visible;
-    padding: 0;
-    display: none; /* Ocultar por defecto, controlado por JS */
+  header .nav ul li {
+      margin: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
   }
   
-  .submenu li a {
-      padding-left: 50px; /* Indentación para sub-items */
-      background: none;
-      color: white;
-  }
-  
-  .submenu li a:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
+  header .nav ul li a {
+      padding: 15px 20px;
+      text-align: left;
   }
 
-  /* Mostrar submenú activo en móvil con JS */
-  .dropdown.active .submenu {
+  .menu-toggle {
     display: block;
+  }
+  
+  .hero h1 {
+      font-size: 2.2em;
+  }
+  
+  .section {
+      padding: 50px 5%;
   }
 }
