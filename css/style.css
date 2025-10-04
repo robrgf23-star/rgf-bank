@@ -29,6 +29,20 @@ header .logo {
   font-size: 1.5em;
   font-weight: bold;
 }
+/* --- TASAS DE CAMBIO (NUEVO) --- */
+.exchange-rates {
+    display: flex;
+    gap: 20px;
+    font-size: 0.85em; /* Tamaño más pequeño */
+    color: #ffd700; /* Un color llamativo para distinguirlo (similar al dorado o amarillo) */
+    margin-right: auto; /* Empuja la navegación a la derecha */
+    padding-left: 30px; /* Separación del logo */
+}
+
+.exchange-rates span {
+    white-space: nowrap; /* Evita que las tasas se rompan en dos líneas */
+    font-weight: bold;
+}
 
 header .nav ul {
   display: flex;
