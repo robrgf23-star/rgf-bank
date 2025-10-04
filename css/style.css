@@ -146,3 +146,71 @@ footer {
     display: block;
   }
 }
+/* --- SUBMENÚ ESTILOS --- */
+
+/* 1. Establecer la posición del padre para que el submenú se posicione en relación a él */
+header .nav ul li.submenu-parent {
+    position: relative;
+}
+
+/* 2. Estilos para el Submenú */
+header .nav ul .submenu {
+    display: none; /* OCULTAR por defecto */
+    position: absolute;
+    top: 100%; /* Posiciona justo debajo del ítem principal */
+    left: 0;
+    min-width: 180px; /* Ancho mínimo para contener el texto */
+    background-color: #003366; /* Un color ligeramente diferente para contraste */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-top: 3px solid #ff9900; /* Detalle de color principal */
+    list-style: none; /* Remover viñetas de la lista */
+    padding: 10px 0;
+    z-index: 1001; /* Asegurar que esté sobre otros elementos */
+}
+
+/* 3. Estilos de los ítems del submenú */
+header .nav ul .submenu li {
+    float: none; /* Asegura que los ítems se apilen verticalmente */
+    margin: 0;
+}
+
+/* 4. Estilos de los enlaces del submenú */
+header .nav ul .submenu li a {
+    padding: 10px 15px;
+    display: block; /* Ocupar todo el ancho del ítem */
+    white-space: nowrap; /* Evita que el texto se rompa */
+    color: #fff;
+    font-weight: normal;
+}
+
+/* 5. Efecto Hover (al pasar el ratón) */
+header .nav ul .submenu li a:hover {
+    background-color: #004080; /* Fondo oscuro al pasar el ratón */
+    text-decoration: none;
+}
+
+/* 6. Mostrar el submenú al pasar el ratón sobre el ítem principal */
+header .nav ul li.submenu-parent:hover .submenu {
+    display: block; /* MOSTRAR el submenú */
+}
+
+/* --- AJUSTE RESPONSIVE (IMPORTANTE) --- */
+
+@media (max-width: 768px) {
+    /* El submenú debe fluir con el menú en la vista móvil */
+    header .nav ul .submenu {
+        position: static; /* Cambia a posición normal para que fluya en el menú vertical */
+        min-width: 100%;
+        border-top: none;
+        padding: 5px 0 5px 20px; /* Sangría para distinguirlo */
+        background-color: #003366; /* Mantiene el color */
+        box-shadow: none;
+    }
+    
+    /* Mostrar el submenú por defecto en vista móvil si el menú principal está activo. */
+    /* El control de visibilidad en móvil puede requerir JavaScript, pero por ahora se muestra */
+    /* ya que el menú principal es vertical. */
+    header .nav ul li.submenu-parent:hover .submenu {
+        display: block;
+    }
+}
